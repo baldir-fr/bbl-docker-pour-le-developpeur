@@ -1,0 +1,17 @@
+version: "3.8"
+
+
+services:
+  # tag::01_slides[]
+  build-slides:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-revealjs"
+      - "-a"
+      - "revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2"
+      - "01_slides/index.adoc"
+      - "-o"
+      - "docs/index.html"
+  # end::01_slides[]

@@ -1,0 +1,64 @@
+= Docker sur le poste du développeur
+:author: Marc Bouvier
+:revealjs_controls: true
+:revealjs_progress: true
+:revealjs_hash: true
+:revealjs_theme: solarized
+
+== Docker
+
+=== Docker Compose
+
+== Cas d'utilisation
+
+
+[.notes]
+--
+Cas d'utilisation pour utiliser docker sur le poste du développeur.
+
+Vous en voyez d'autres ?
+
++ Éviter de polluer son environnement
++ Tester un logiciel compliqué à installer par exemple gitlab
++ Test containers
++ Utiliser des outils sans les installer : Plantuml tooling / asciidoctor
++ Tester et reproduire l'intégration continue en local
++ Vs code remote
++ Lancer des logiciels dont on ne connaît pas la technologie
++ Par exemple springboot si on fait du JavaScript
++ Tester une nouvelle version de langage ec
++ java 11 java 17..
+- Infrastructure éphémère : lancer un serveur pour le temps d'un événement
+- Réduire la différence entre le développement local et le développement déployé
+- Bac à sable
+- Être admin dans un container quand on n'est pas admin de sa machine
+--
+
+
+== Lancer des outils sans les installer
+
+=== Asciidoctor
+
+[.notes]
+--
+Asciidoctor est un format de markup.
+C'est aussi un outil qui permet de générer du contenu.
+--
+
+- html
+- pdf
+- slides
+- ebook
+
+=== Démo Asciidoctor
+
+Ces slides
+
+`docker-compose.yml`
+
+[source,yml]
+----
+include::../docker-compose.yml[tag=01_slides]
+----
+
+
