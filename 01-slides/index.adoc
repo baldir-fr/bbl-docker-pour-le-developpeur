@@ -8,8 +8,6 @@
 
 == Docker
 
-
-
 "Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels."
 -- Wikipedia, https://fr.wikipedia.org/wiki/Docker_(logiciel)[Docker (logiciel)]
 
@@ -19,30 +17,40 @@
 -- Wikipedia, Docker (logiciel) : https://fr.wikipedia.org/wiki/Docker_(logiciel)#Outils_associ.C3.A9s[Outils associés]
 
 
+[.columns]
 == Cas d'utilisation
 
 
 [.notes]
 --
 Docker et docker-compose peuvent être utiles au quotidien pour les développeurs.
+--
 
-1. Utiliser des outils sans les installer
-2. Éviter de polluer son environnement
-3. Tester un logiciel compliqué à installer par exemple gitlab
-4. Test containers
-5. Tester et reproduire l'intégration continue en local
-6. Environnements de développement à distance (Vs code remote, gitpod, code server)
-7. Lancer des logiciels dont on ne connaît pas la technologie
-8. Par exemple springboot si on fait du JavaScript
-9. Tester une nouvelle version de langage (ex. java 11 java 17..)
-10. Infrastructure éphémère : lancer un serveur pour le temps d'un événement
+[.column]
+--
+* Utiliser des outils sans les installer
+* Tester un logiciel compliqué à installer
+* Test containers
+* Tester et reproduire l'intégration continue en local (lancer des scripts sur le même environnement que la CI)
+* Environnements de développement conteneurisés
+--
+
+[.column]
+--
+* Lancer des logiciels dont on ne connaît pas la technologie
+* Tester une nouvelle version de langage
+* Infrastructure éphémère : lancer un serveur pour le temps d'un événement
 11. Réduire la différence entre le développement local et le développement déployé (ex depuis windows, exécuter sur linux)
-12. Bac à sable
+12. Bac à sable (essayer des choses risquées dans un environnement safe ex apprendre les commandes linux sans tout casser)
 13. Être admin dans un container quand on n'est pas admin de sa machine
 --
 
+== 01 Utiliser des outils sans les installer
 
-== 01 Lancer des outils sans les installer
+[.notes]
+--
+* Éviter de polluer son environnement
+--
 
 === Asciidoctor
 
@@ -68,4 +76,50 @@ Ces slides footnote:[https://github.com/baldir-fr/bbl-docker-pour-le-developpeur
 include::../docker-compose.yml[tag=01_slides]
 ----
 
+== 02 Tester un logiciel compliqué à installer
 
+[.note]
+--
+* Par exemple Gitlab
+--
+
+== 03 Test Containers
+
+[.note]
+--
+https://www.testcontainers.org/
+--
+
+== XX Lancer des logiciels dont on ne connaît pas la technologie
+
+[.notes]
+--
+* Par exemple springboot si on fait du JavaScript
+--
+
+== XX Tester une nouvelle version de langage
+
+[.notes]
+--
+* (ex. java 11 java 17..)
+--
+
+== XX Infrastructure éphémère
+
+[.notes]
+--
+* Pour un événement donné, lancer un serveur
+* Le supprimer à la fin de l'événement
+* Permet aux participants d'accéder à l'outil sans s'inscrire par exemple (les données sont supprimées à la fin de l'événement)
+--
+
+== Environnements de développement conteneurisés
+
+[.note]
+--
+* Vs code remote
+* Gitpod
+* Code Server
+--
+
+== XX Bac à sable

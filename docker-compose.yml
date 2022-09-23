@@ -24,3 +24,12 @@ services:
       - "01-slides/index.adoc"
       - "-o"
       - "docs/bbl-docker-pour-le-developpeur.pdf"
+  build-epub:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-epub3"
+      - "01-slides/index.adoc"
+      - "-o"
+      - "docs/bbl-docker-pour-le-developpeur.epub"
