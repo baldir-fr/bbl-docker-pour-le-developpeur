@@ -13,37 +13,32 @@
 
 === Docker Compose
 
-"Docker Compose est un logiciel pour définir et exécuter des applications à partir de multiples conteneurs. Il est basé sur un fichier YAML qui permet de définir les services et les paramètres de leurs créations et ainsi de les démarrer par une commande unique."
+"Docker Compose est un logiciel pour définir et exécuter des applications à partir de multiples conteneurs.
+Il est basé sur un fichier YAML qui permet de définir les services et les paramètres de leurs créations et ainsi de les démarrer par une commande unique."
 -- Wikipedia, Docker (logiciel) : https://fr.wikipedia.org/wiki/Docker_(logiciel)#Outils_associ.C3.A9s[Outils associés]
 
-
-[.columns]
-== Cas d'utilisation
-
+== Cas d'utilisation 1/2
 
 [.notes]
 --
 Docker et docker-compose peuvent être utiles au quotidien pour les développeurs.
 --
 
-[.column]
---
 * Utiliser des outils sans les installer
 * Tester un logiciel compliqué à installer
 * Test containers
-* Tester et reproduire l'intégration continue en local (lancer des scripts sur le même environnement que la CI)
+* Reproduire la CI en local
 * Environnements de développement conteneurisés
---
 
-[.column]
---
+
+=== Cas d'utilisation 2/2
+
 * Lancer des logiciels dont on ne connaît pas la technologie
-* Tester une nouvelle version de langage
-* Infrastructure éphémère : lancer un serveur pour le temps d'un événement
-11. Réduire la différence entre le développement local et le développement déployé (ex depuis windows, exécuter sur linux)
-12. Bac à sable (essayer des choses risquées dans un environnement safe ex apprendre les commandes linux sans tout casser)
-13. Être admin dans un container quand on n'est pas admin de sa machine
---
+* Tester une nouvelle version d'un langage
+* Être admin dans un container
+* Infrastructure éphémère
+* Bac à sable
+* Simuler l'environnement cible en local
 
 == 01 Utiliser des outils sans les installer
 
@@ -78,48 +73,80 @@ include::../docker-compose.yml[tag=01_slides]
 
 == 02 Tester un logiciel compliqué à installer
 
-[.note]
+[.notes]
 --
 * Par exemple Gitlab
 --
 
 == 03 Test Containers
 
-[.note]
+[.notes]
 --
 https://www.testcontainers.org/
 --
 
-== XX Lancer des logiciels dont on ne connaît pas la technologie
+== 04 Reproduire la CI en local
 
 [.notes]
 --
-* Par exemple springboot si on fait du JavaScript
+Lancer des scripts sur le même environnement que la CI
 --
 
-== XX Tester une nouvelle version de langage
+== 05 Environnements de développement conteneurisés
 
 [.notes]
---
-* (ex. java 11 java 17..)
---
-
-== XX Infrastructure éphémère
-
-[.notes]
---
-* Pour un événement donné, lancer un serveur
-* Le supprimer à la fin de l'événement
-* Permet aux participants d'accéder à l'outil sans s'inscrire par exemple (les données sont supprimées à la fin de l'événement)
---
-
-== Environnements de développement conteneurisés
-
-[.note]
 --
 * Vs code remote
 * Gitpod
 * Code Server
 --
 
-== XX Bac à sable
+== 06 Lancer des logiciels dont on ne connaît pas la technologie
+
+[.notes]
+--
+* Par exemple springboot si on fait du JavaScript
+* Keycloak
+--
+
+== 07 Tester une nouvelle version d'un langage
+
+[.notes]
+--
+* (ex. java 11 java 17..)
+--
+
+== 08 Être admin dans un conteneur
+
+[.notes]
+--
+* quand on n'est pas admin de sa machine sur Windows par exemple
+--
+
+== 09 Infrastructure éphémère
+
+[.notes]
+--
+Lancer un serveur pour le temps d'un événement * Pour un événement donné, lancer un serveur * Le supprimer à la fin de l'événement * Permet aux participants d'accéder à l'outil sans s'inscrire par exemple (les données sont supprimées à la fin de l'événement)
+--
+
+== 10 Bac à sable
+
+[.notes]
+--
+* Expérimenter sans risques
+* Essayer des choses risquées dans un environnement safe
+* apprendre les commandes linux sans tout casser
+** sous réserve de certaines précautions
+--
+
+== 11 Simuler l'environnement cible en local
+
+[.notes]
+--
+* ex depuis windows exécuter sur linux
+--
+
+== 🙏 Merci
+
+Des questions? 🖐
