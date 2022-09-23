@@ -4,18 +4,17 @@
 * link:docs/bbl-docker-pour-le-developpeur.pdf[Version PDF]
 * link:docs/bbl-docker-pour-le-developpeur.epub[Version Epub]
 
-== Génération des slides
+== Pré-requis pour construire les exemples
 
-[NOTE]
-.Pré-requis
-====
 * Docker Engine 19.03.0+
 * Docker compose
 
 Optionnel
 
 * GNU Make
-====
+
+== Génération des slides
+
 
 [source,shell]
 ----
