@@ -1,2 +1,17 @@
 = Docker sur le poste du développeur
 
+== Génération avec asciidoctor-revealjs
+
+[source,shell]
+----
+make 01-slides
+----
+
+* https://github.com/asciidoctor/docker-asciidoctor/blob/main/README.adoc[docker-asciidoctor]
+* https://docs.asciidoctor.org/asciidoctor/latest/cli/:[Asciidoc CLI]
+* https://docs.asciidoctor.org/reveal.js-converter/latest/converter/features/[Asciidoctor revealjs — écrire une présentation]
+* https://docs.asciidoctor.org/reveal.js-converter/latest/converter/revealjs-options/[Asciidoctor revealjs — configurer revealjs]
+* https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions/#tagging-regions[Asciidoctor — inclure des snippets à l'aide de régions]
+
+
+

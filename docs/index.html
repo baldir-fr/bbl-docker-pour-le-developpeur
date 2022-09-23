@@ -409,9 +409,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );</script></head><
 - Réduire la différence entre le développement local et le développement déployé
 - Bac à sable
 - Être admin dans un container quand on n&#8217;est pas admin de sa machine</p></div></aside></div></section>
-<section><section id="_lancer_des_outils_sans_les_installer"><h2>Lancer des outils sans les installer</h2></section><section id="_asciidoctor"><h2>Asciidoctor</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Asciidoctor est un format de markup.
+<section><section id="_01_lancer_des_outils_sans_les_installer"><h2>01 Lancer des outils sans les installer</h2></section><section id="_asciidoctor"><h2>Asciidoctor</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Asciidoctor est un format de markup.
 C&#8217;est aussi un outil qui permet de générer du contenu.</p></div></aside>
-<div class="ulist"><ul><li><p>html</p></li><li><p>pdf</p></li><li><p>slides</p></li><li><p>ebook</p></li></ul></div></div></section><section id="_démo_asciidoctor"><h2>Démo Asciidoctor</h2><div class="slide-content"><div class="paragraph"><p>Ces slides</p></div>
+<div class="ulist"><ul><li><p>html</p></li><li><p>pdf</p></li><li><p>slides</p></li><li><p>ebook</p></li></ul></div></div></section><section id="_démo_asciidoctor"><h2>Démo Asciidoctor</h2><div class="slide-content"><div class="paragraph"><p>Ces slides <sup class="footnote">[<span class="footnote" title="View footnote.">1</span>]</sup></p></div>
 <div class="paragraph"><p><code>docker-compose.yml</code></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-yml" data-lang="yml">  build-slides:
     image: "asciidoctor/docker-asciidoctor"
@@ -421,9 +421,9 @@ C&#8217;est aussi un outil qui permet de générer du contenu.</p></div></aside>
       - "asciidoctor-revealjs"
       - "-a"
       - "revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2"
-      - "01_slides/index.adoc"
+      - "01-slides/index.adoc"
       - "-o"
-      - "docs/index.html"</code></pre></div></div></div></section></section></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+      - "docs/index.html"</code></pre></div></div></div><div class="footnotes"><div class="footnote">1. <a href="https://github.com/baldir-fr/bbl-docker-pour-le-developpeur" class="bare">https://github.com/baldir-fr/bbl-docker-pour-le-developpeur</a></div></div></section></section></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -567,7 +567,7 @@ Reveal.initialize({
   height: 700,
 
   // Factor of the display size that should remain empty around the content
-  margin: 0.1,
+  margin: 0.2,
 
   // Bounds for smallest/largest possible scale to apply to content
   minScale: 0.2,

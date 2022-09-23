@@ -4,6 +4,7 @@
 :revealjs_progress: true
 :revealjs_hash: true
 :revealjs_theme: solarized
+:revealjs_margin: 0.2
 
 == Docker
 
@@ -35,7 +36,7 @@ Vous en voyez d'autres ?
 --
 
 
-== Lancer des outils sans les installer
+== 01 Lancer des outils sans les installer
 
 === Asciidoctor
 
@@ -52,7 +53,7 @@ C'est aussi un outil qui permet de générer du contenu.
 
 === Démo Asciidoctor
 
-Ces slides
+Ces slides footnote:[https://github.com/baldir-fr/bbl-docker-pour-le-developpeur]
 
 `docker-compose.yml`
 
