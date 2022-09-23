@@ -15,24 +15,21 @@
 
 [.notes]
 --
-Cas d'utilisation pour utiliser docker sur le poste du développeur.
+Docker et docker-compose peuvent être utiles au quotidien pour les développeurs.
 
-Vous en voyez d'autres ?
-
-+ Éviter de polluer son environnement
-+ Tester un logiciel compliqué à installer par exemple gitlab
-+ Test containers
-+ Utiliser des outils sans les installer : Plantuml tooling / asciidoctor
-+ Tester et reproduire l'intégration continue en local
-+ Vs code remote
-+ Lancer des logiciels dont on ne connaît pas la technologie
-+ Par exemple springboot si on fait du JavaScript
-+ Tester une nouvelle version de langage ec
-+ java 11 java 17..
-- Infrastructure éphémère : lancer un serveur pour le temps d'un événement
-- Réduire la différence entre le développement local et le développement déployé
-- Bac à sable
-- Être admin dans un container quand on n'est pas admin de sa machine
+1. Utiliser des outils sans les installer
+2. Éviter de polluer son environnement
+3. Tester un logiciel compliqué à installer par exemple gitlab
+4. Test containers
+5. Tester et reproduire l'intégration continue en local
+6. Environnements de développement à distance (Vs code remote, gitpod, code server)
+7. Lancer des logiciels dont on ne connaît pas la technologie
+8. Par exemple springboot si on fait du JavaScript
+9. Tester une nouvelle version de langage (ex. java 11 java 17..)
+10. Infrastructure éphémère : lancer un serveur pour le temps d'un événement
+11. Réduire la différence entre le développement local et le développement déployé (ex depuis windows, exécuter sur linux)
+12. Bac à sable
+13. Être admin dans un container quand on n'est pas admin de sa machine
 --
 
 

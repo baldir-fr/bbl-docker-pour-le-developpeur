@@ -1,5 +1,8 @@
 = Docker sur le poste du développeur
 
+* https://baldir-fr.github.io/bbl-docker-pour-le-developpeur[Les slides en live]
+* https://baldir-fr.github.io/bbl-docker-pour-le-developpeur/bbl-docker-pour-le-developpeur.pdf[Version PDF]
+
 == Génération avec asciidoctor-revealjs
 
 [source,shell]

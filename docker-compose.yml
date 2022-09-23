@@ -15,3 +15,12 @@ services:
       - "-o"
       - "docs/index.html"
   # end::01_slides[]
+  build-pdf:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-pdf"
+      - "01-slides/index.adoc"
+      - "-o"
+      - "docs/bbl-docker-pour-le-developpeur.pdf"
