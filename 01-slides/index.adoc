@@ -11,7 +11,7 @@
 
 
 "Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels."
--- Wikipedia, https://fr.wikipedia.org/wiki/Docker_(logiciel)[docker (logiciel)]
+-- Wikipedia, https://fr.wikipedia.org/wiki/Docker_(logiciel)[Docker (logiciel)]
 
 === Docker Compose
 
