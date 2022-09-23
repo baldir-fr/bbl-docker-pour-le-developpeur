@@ -8,7 +8,16 @@
 
 == Docker
 
+
+
+"Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels."
+-- Wikipedia, https://fr.wikipedia.org/wiki/Docker_(logiciel)[docker (logiciel)]
+
 === Docker Compose
+
+"Docker Compose est un logiciel pour définir et exécuter des applications à partir de multiples conteneurs. Il est basé sur un fichier YAML qui permet de définir les services et les paramètres de leurs créations et ainsi de les démarrer par une commande unique."
+-- Wikipedia, Docker (logiciel) : https://fr.wikipedia.org/wiki/Docker_(logiciel)#Outils_associ.C3.A9s[Outils associés]
+
 
 == Cas d'utilisation
 
