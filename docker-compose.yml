@@ -33,6 +33,22 @@ services:
       - "01-slides/index.adoc"
       - "-o"
       - "docs/bbl-docker-pour-le-developpeur.epub"
+  01-rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    # guest / guest
+  # tag::05-code-server[]
+  05-code-server:
+    image: registry.gitlab.com/crafting-software/online-code/js
+    user: code
+    ports:
+      - "8094:8080"
+    environment:
+      - PASSWORD=testing
+  # end::05-code-server[]
   # tag::07_java_8[]
   07-movie-rental-java-8:
     image: "maven:3-openjdk-8-slim"

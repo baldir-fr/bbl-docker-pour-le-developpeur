@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
+//tag::03-test-containers-01[]
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
     "spring.datasource.url=jdbc:tc:postgresql:11-alpine:///databasename",
@@ -27,3 +28,4 @@ public abstract class AbstractIntegrationTest {
         registry.add("spring.redis.port", redis::getFirstMappedPort);
     }
 }
+//end::03-test-containers-01[]

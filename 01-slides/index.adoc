@@ -23,6 +23,10 @@ Catalogue d'images docker.
 
 https://hub.docker.com/[hub.docker.com]
 
+=== Ouvrir un terminal dans un container
+
+
+
 == Cas d'utilisation 1/2
 
 [.notes]
@@ -47,7 +51,6 @@ Docker et docker-compose peuvent être utiles au quotidien pour les développeur
 * Simuler l'environnement cible en local
 
 == 01 Utiliser des outils sans les installer
-
 [.notes]
 --
 * Éviter de polluer son environnement
@@ -55,6 +58,16 @@ Docker et docker-compose peuvent être utiles au quotidien pour les développeur
 
 * base de données
 * serveur d'authentification
+
+=== RabbitMq — installation classique
+
+Installation classique de RabbitMq
+
+image::./assets/rabbitmq_manual_installation.gif[]
+
+=== RabbitMq — lancement avec docker
+
+
 
 === Asciidoctor
 
@@ -84,19 +97,51 @@ include::../docker-compose.yml[tag=01_slides]
 
 [.notes]
 --
-* Par exemple Gitlab
+* Par exemple
+**Gitlab (nécessite beaucoup de mémoire)
+** Nextcloud
+* Pratique pour jouer avec la configuration
 --
+
+=== Démo Nextcloud + PostgreSQL
+
+[source,yml]
+----
+include::../02-tester-logiciel-compliqué/nextcloud/docker-compose.yml[]
+----
+
+http://localhost:80
 
 == 03 Test Containers
 
 [.notes]
 --
-https://www.testcontainers.org/
+* lance un conteneur juste le temps des tests
+* bases de données
+* Nginx
+* rabbitMq
 --
 
-=== Test containers avec spring boot
+https://www.testcontainers.org/[testcontainers.org]
 
 
+=== Spring Boot + TestContainers + Redis 1/2
+
+[source,java]
+----
+include::../03-test-containers/spring-boot/src/test/java/com/example/AbstractIntegrationTest.java[tag=03-test-containers-01]
+----
+
+=== Spring Boot + TestContainers + Redis 1/2
+
+[source,java]
+----
+include::../03-test-containers/spring-boot/src/test/java/com/example/DemoControllerTest.java[tag=03-test-containers-02]
+----
+
+=== Démo
+
+https://github.com/baldir-fr/bbl-docker-pour-le-developpeur/tree/main/03-test-containers/spring-boot
 
 == 04 Reproduire la CI en local
 
@@ -114,6 +159,21 @@ Lancer des scripts sur le même environnement que la CI
 * Code Server
 --
 
+=== Code Server
+
+https://github.com/coder/code-server
+
+Editeur de code pré-configuré sur le navigateur.
+
+=== Démo
+
+[source,yml]
+----
+include::../docker-compose.yml[tag=05-code-server]
+----
+
+http://localhost:8094
+
 == 06 Lancer des logiciels dont on ne connaît pas la technologie
 
 [.notes]
@@ -122,6 +182,8 @@ Lancer des scripts sur le même environnement que la CI
 * Keycloak
 * ffmpeg + imagemagick
 --
+
+https://github.com/docker/awesome-compose[Awesome Docker Compose] starters
 
 === Conversion de .mov en .gif
 

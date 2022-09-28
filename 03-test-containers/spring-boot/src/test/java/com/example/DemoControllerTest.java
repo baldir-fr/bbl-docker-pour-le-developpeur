@@ -6,6 +6,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//tag::03-test-containers-02[]
 public class DemoControllerTest extends AbstractIntegrationTest {
 
     @Autowired
@@ -35,3 +36,4 @@ public class DemoControllerTest extends AbstractIntegrationTest {
     }
 
 }
+//end::03-test-containers-02[]

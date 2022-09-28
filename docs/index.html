@@ -394,9 +394,10 @@ link.type = 'text/css';
 link.href = window.location.search.match( /print-pdf/gi ) ? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/print/pdf.css" : "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/print/paper.css";
 document.getElementsByTagName( 'head' )[0].appendChild( link );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Docker sur le poste du développeur</h1><p class="author"><small>Marc Bouvier</small></p></section><section><section id="_docker"><h2>Docker</h2><div class="slide-content"><div class="quoteblock"><blockquote>Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels.</blockquote><div class="attribution"><cite><a href="https://fr.wikipedia.org/wiki/Docker_(logiciel)">Docker (logiciel)</a></cite><br>&#8212; Wikipedia</div></div></div></section><section id="_docker_compose"><h2>Docker Compose</h2><div class="slide-content"><div class="quoteblock"><blockquote>Docker Compose est un logiciel pour définir et exécuter des applications à partir de multiples conteneurs.
 Il est basé sur un fichier YAML qui permet de définir les services et les paramètres de leurs créations et ainsi de les démarrer par une commande unique.</blockquote><div class="attribution"><cite>Docker (logiciel) : <a href="https://fr.wikipedia.org/wiki/Docker_(logiciel)#Outils_associ.C3.A9s">Outils associés</a></cite><br>&#8212; Wikipedia</div></div></div></section><section id="_docker_hub"><h2>Docker Hub</h2><div class="slide-content"><div class="paragraph"><p>Catalogue d&#8217;images docker.</p></div>
-<div class="paragraph"><p><a href="https://hub.docker.com/">hub.docker.com</a></p></div></div></section></section>
+<div class="paragraph"><p><a href="https://hub.docker.com/">hub.docker.com</a></p></div></div></section><section id="_ouvrir_un_terminal_dans_un_container"><h2>Ouvrir un terminal dans un container</h2></section></section>
 <section><section id="_cas_dutilisation_12"><h2>Cas d&#8217;utilisation 1/2</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Docker et docker-compose peuvent être utiles au quotidien pour les développeurs.</p></div></aside><div class="ulist"><ul><li><p>Utiliser des outils sans les installer</p></li><li><p>Tester un logiciel compliqué à installer</p></li><li><p>Test containers</p></li><li><p>Reproduire la CI en local</p></li><li><p>Environnements de développement conteneurisés</p></li></ul></div></div></section><section id="_cas_dutilisation_22"><h2>Cas d&#8217;utilisation 2/2</h2><div class="slide-content"><div class="ulist"><ul><li><p>Lancer des logiciels dont on ne connaît pas la technologie</p></li><li><p>Tester une nouvelle version d&#8217;un langage</p></li><li><p>Être admin dans un container</p></li><li><p>Infrastructure éphémère</p></li><li><p>Bac à sable</p></li><li><p>Simuler l&#8217;environnement cible en local</p></li></ul></div></div></section></section>
-<section><section id="_01_utiliser_des_outils_sans_les_installer"><h2>01 Utiliser des outils sans les installer</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Éviter de polluer son environnement</p></li></ul></div></aside><div class="ulist"><ul><li><p>base de données</p></li><li><p>serveur d&#8217;authentification</p></li></ul></div></div></section><section id="_asciidoctor"><h2>Asciidoctor</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Asciidoctor est un format de markup.
+<section><section id="_01_utiliser_des_outils_sans_les_installer"><h2>01 Utiliser des outils sans les installer</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Éviter de polluer son environnement</p></li></ul></div></aside><div class="ulist"><ul><li><p>base de données</p></li><li><p>serveur d&#8217;authentification</p></li></ul></div></div></section><section id="_rabbitmq_installation_classique"><h2>RabbitMq — installation classique</h2><div class="slide-content"><div class="paragraph"><p>Installation classique de RabbitMq</p></div>
+<div class="imageblock"><img src="./assets/rabbitmq_manual_installation.gif" alt="rabbitmq manual installation"></div></div></section><section id="_rabbitmq_lancement_avec_docker"><h2>RabbitMq — lancement avec docker</h2></section><section id="_asciidoctor"><h2>Asciidoctor</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Asciidoctor est un format de markup.
 C&#8217;est aussi un outil qui permet de générer du contenu.</p></div></aside>
 <div class="ulist"><ul><li><p>html</p></li><li><p>pdf</p></li><li><p>slides</p></li><li><p>ebook</p></li></ul></div></div></section><section id="_démo_asciidoctor"><h2>Démo Asciidoctor</h2><div class="slide-content"><div class="paragraph"><p>Ces slides <sup class="footnote">[<span class="footnote" title="View footnote.">1</span>]</sup></p></div>
 <div class="paragraph"><p><code>docker-compose.yml</code></p></div>
@@ -411,11 +412,88 @@ C&#8217;est aussi un outil qui permet de générer du contenu.</p></div></aside>
       - "01-slides/index.adoc"
       - "-o"
       - "docs/index.html"</code></pre></div></div></div><div class="footnotes"><div class="footnote">1. <a href="https://github.com/baldir-fr/bbl-docker-pour-le-developpeur" class="bare">https://github.com/baldir-fr/bbl-docker-pour-le-developpeur</a></div></div></section></section>
-<section id="_02_tester_un_logiciel_compliqué_à_installer"><h2>02 Tester un logiciel compliqué à installer</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Par exemple Gitlab</p></li></ul></div></aside></div></section>
-<section><section id="_03_test_containers"><h2>03 Test Containers</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p><a href="https://www.testcontainers.org/" class="bare">https://www.testcontainers.org/</a></p></div></aside></div></section><section id="_test_containers_avec_spring_boot"><h2>Test containers avec spring boot</h2></section></section>
+<section><section id="_02_tester_un_logiciel_compliqué_à_installer"><h2>02 Tester un logiciel compliqué à installer</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Par exemple
+**Gitlab (nécessite beaucoup de mémoire)</p><div class="ulist"><ul><li><p>Nextcloud</p></li></ul></div></li><li><p>Pratique pour jouer avec la configuration</p></li></ul></div></aside></div></section><section id="_démo_nextcloud_postgresql"><h2>Démo Nextcloud + PostgreSQL</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-yml" data-lang="yml">services:
+  nc:
+    image: nextcloud:apache
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - .volumes/nc_data:/var/www/html
+  db:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+    restart: always
+    volumes:
+      - .volumes/db_data:/var/lib/postgresql/data
+    expose:
+      - 5432</code></pre></div></div>
+<div class="paragraph"><p><a href="http://localhost:80" class="bare">http://localhost:80</a></p></div></div></section></section>
+<section><section id="_03_test_containers"><h2>03 Test Containers</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>lance un conteneur juste le temps des tests</p></li><li><p>bases de données</p></li><li><p>Nginx</p></li><li><p>rabbitMq</p></li></ul></div></aside><div class="paragraph"><p><a href="https://www.testcontainers.org/">testcontainers.org</a></p></div></div></section><section id="_spring_boot_testcontainers_redis_12"><h2>Spring Boot + TestContainers + Redis 1/2</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
+    "spring.datasource.url=jdbc:tc:postgresql:11-alpine:///databasename",
+})
+@ActiveProfiles("test")
+public abstract class AbstractIntegrationTest {
+
+    static GenericContainer&lt;?&gt; redis = new GenericContainer&lt;&gt;(DockerImageName.parse("redis:3-alpine"))
+        .withExposedPorts(6379);
+
+    @DynamicPropertySource
+    static void redisProperties(DynamicPropertyRegistry registry) {
+        redis.start();
+        registry.add("spring.redis.host", redis::getHost);
+        registry.add("spring.redis.port", redis::getFirstMappedPort);
+    }
+}</code></pre></div></div></div></section><section id="_spring_boot_testcontainers_redis_12_2"><h2>Spring Boot + TestContainers + Redis 1/2</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">public class DemoControllerTest extends AbstractIntegrationTest {
+
+    @Autowired
+    TestRestTemplate restTemplate;
+
+    @Autowired
+    DemoRepository demoRepository;
+
+    @Test
+    public void simpleTest() {
+        String fooResource = "/foo";
+
+        restTemplate.put(fooResource, "bar");
+
+        assertThat(restTemplate.getForObject(fooResource, String.class)).as("value is set").isEqualTo("bar");
+    }
+
+    @Test
+    public void simpleJPATest() {
+        DemoEntity demoEntity = new DemoEntity();
+        demoEntity.setValue("Some value");
+        demoRepository.save(demoEntity);
+
+        DemoEntity result = restTemplate.getForObject("/" + demoEntity.getId(), DemoEntity.class);
+
+        assertThat(result.getValue()).as("value is set").isEqualTo("Some value");
+    }
+
+}</code></pre></div></div></div></section><section id="_démo"><h2>Démo</h2><div class="slide-content"><div class="paragraph"><p><a href="https://github.com/baldir-fr/bbl-docker-pour-le-developpeur/tree/main/03-test-containers/spring-boot" class="bare">https://github.com/baldir-fr/bbl-docker-pour-le-developpeur/tree/main/03-test-containers/spring-boot</a></p></div></div></section></section>
 <section id="_04_reproduire_la_ci_en_local"><h2>04 Reproduire la CI en local</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Lancer des scripts sur le même environnement que la CI</p></div></aside></div></section>
-<section id="_05_environnements_de_développement_conteneurisés"><h2>05 Environnements de développement conteneurisés</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Vs code remote</p></li><li><p>Gitpod</p></li><li><p>Code Server</p></li></ul></div></aside></div></section>
-<section><section id="_06_lancer_des_logiciels_dont_on_ne_connaît_pas_la_technologie"><h2>06 Lancer des logiciels dont on ne connaît pas la technologie</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Par exemple springboot si on fait du JavaScript</p></li><li><p>Keycloak</p></li><li><p>ffmpeg + imagemagick</p></li></ul></div></aside></div></section><section id="_conversion_de_mov_en_gif"><h2>Conversion de .mov en .gif</h2><div class="slide-content"><div class="paragraph"><p><a href="https://toub.es/2017/09/11/high-quality-gif-with-ffmpeg-and-docker/" class="bare">https://toub.es/2017/09/11/high-quality-gif-with-ffmpeg-and-docker/</a></p></div>
+<section><section id="_05_environnements_de_développement_conteneurisés"><h2>05 Environnements de développement conteneurisés</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Vs code remote</p></li><li><p>Gitpod</p></li><li><p>Code Server</p></li></ul></div></aside></div></section><section id="_code_server"><h2>Code Server</h2><div class="slide-content"><div class="paragraph"><p><a href="https://github.com/coder/code-server" class="bare">https://github.com/coder/code-server</a></p></div>
+<div class="paragraph"><p>Editeur de code pré-configuré sur le navigateur.</p></div></div></section><section id="_démo_2"><h2>Démo</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-yml" data-lang="yml">  05-code-server:
+    image: registry.gitlab.com/crafting-software/online-code/js
+    user: code
+    ports:
+      - "8094:8080"
+    environment:
+      - PASSWORD=testing</code></pre></div></div>
+<div class="paragraph"><p><a href="http://localhost:8094" class="bare">http://localhost:8094</a></p></div></div></section></section>
+<section><section id="_06_lancer_des_logiciels_dont_on_ne_connaît_pas_la_technologie"><h2>06 Lancer des logiciels dont on ne connaît pas la technologie</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>Par exemple springboot si on fait du JavaScript</p></li><li><p>Keycloak</p></li><li><p>ffmpeg + imagemagick</p></li></ul></div></aside><div class="paragraph"><p><a href="https://github.com/docker/awesome-compose">Awesome Docker Compose</a> starters</p></div></div></section><section id="_conversion_de_mov_en_gif"><h2>Conversion de .mov en .gif</h2><div class="slide-content"><div class="paragraph"><p><a href="https://toub.es/2017/09/11/high-quality-gif-with-ffmpeg-and-docker/" class="bare">https://toub.es/2017/09/11/high-quality-gif-with-ffmpeg-and-docker/</a></p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">alias video2gif='sudo docker run -v=`pwd`:/tmp/ffmpeg kafebob/video2gif'</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-shell" data-lang="shell">video2gif rabbitmq_manual_installation.mov rabbitmq_manual_installation.gif</code></pre></div></div></div></section></section>
 <section><section id="_07_tester_une_nouvelle_version_dun_langage"><h2>07 Tester une nouvelle version d&#8217;un langage</h2><div class="slide-content"><aside class="notes"><div class="ulist"><ul><li><p>(ex. java 11 java 17..)</p></li></ul></div></aside></div></section><section id="_java_8"><h2>Java 8</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-yml" data-lang="yml">  07-movie-rental-java-8:
