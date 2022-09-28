@@ -33,3 +33,25 @@ services:
       - "01-slides/index.adoc"
       - "-o"
       - "docs/bbl-docker-pour-le-developpeur.epub"
+  07-movie-rental-java-17:
+    image: "maven:3-openjdk-17-slim"
+    working_dir: "/java-app"
+    volumes:
+      - "./07-movie-rental-java-17:/java-app"
+      - "./.volumes/07-movie-rental-java-17-.m2:/root/.m2"
+    command:
+      - "mvn"
+#      - "-Dmaven.compiler.source=17"
+      - "clean"
+      - "test"
+  07-movie-rental-java-8:
+    image: "maven:3-openjdk-8-slim"
+    working_dir: "/java-app"
+    volumes:
+      - "./07-movie-rental-java-8:/java-app"
+      - "./.volumes/07-movie-rental-java-8-.m2:/root/.m2"
+    command:
+      - "mvn"
+#      - "-Dmaven.compiler.source=8"
+      - "clean"
+      - "test"
