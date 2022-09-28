@@ -12,20 +12,22 @@ import org.testcontainers.utility.DockerImageName;
 
 //tag::03-test-containers-01[]
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
-    "spring.datasource.url=jdbc:tc:postgresql:11-alpine:///databasename",
+@SpringBootTest(classes = DemoApplication.class,
+  webEnvironment = WebEnvironment.RANDOM_PORT, properties = {
+  "spring.datasource.url=jdbc:tc:postgresql:11-alpine:///databasename",
 })
 @ActiveProfiles("test")
 public abstract class AbstractIntegrationTest {
 
-    static GenericContainer<?> redis = new GenericContainer<>(DockerImageName.parse("redis:3-alpine"))
-        .withExposedPorts(6379);
+  static GenericContainer<?> redis = new GenericContainer<>(
+    DockerImageName.parse("redis:3-alpine"))
+    .withExposedPorts(6379);
 
-    @DynamicPropertySource
-    static void redisProperties(DynamicPropertyRegistry registry) {
-        redis.start();
-        registry.add("spring.redis.host", redis::getHost);
-        registry.add("spring.redis.port", redis::getFirstMappedPort);
-    }
+  @DynamicPropertySource
+  static void redisProperties(DynamicPropertyRegistry registry) {
+    redis.start();
+    registry.add("spring.redis.host", redis::getHost);
+    registry.add("spring.redis.port", redis::getFirstMappedPort);
+  }
 }
 //end::03-test-containers-01[]

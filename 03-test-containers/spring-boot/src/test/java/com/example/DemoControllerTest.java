@@ -9,31 +9,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 //tag::03-test-containers-02[]
 public class DemoControllerTest extends AbstractIntegrationTest {
 
-    @Autowired
-    TestRestTemplate restTemplate;
+  @Autowired
+  TestRestTemplate restTemplate;
 
-    @Autowired
-    DemoRepository demoRepository;
+  @Autowired
+  DemoRepository demoRepository;
 
-    @Test
-    public void simpleTest() {
-        String fooResource = "/foo";
+  @Test
+  public void simpleTest() {
+    String fooResource = "/foo";
 
-        restTemplate.put(fooResource, "bar");
+    restTemplate.put(fooResource, "bar");
 
-        assertThat(restTemplate.getForObject(fooResource, String.class)).as("value is set").isEqualTo("bar");
-    }
+    assertThat(restTemplate.getForObject(fooResource, String.class))
+      .as("value is set")
+      .isEqualTo("bar");
+  }
 
-    @Test
-    public void simpleJPATest() {
-        DemoEntity demoEntity = new DemoEntity();
-        demoEntity.setValue("Some value");
-        demoRepository.save(demoEntity);
+  @Test
+  public void simpleJPATest() {
+    DemoEntity demoEntity = new DemoEntity();
+    demoEntity.setValue("Some value");
+    demoRepository.save(demoEntity);
 
-        DemoEntity result = restTemplate.getForObject("/" + demoEntity.getId(), DemoEntity.class);
+    DemoEntity result = restTemplate.getForObject(
+      "/" + demoEntity.getId(), DemoEntity.class);
 
-        assertThat(result.getValue()).as("value is set").isEqualTo("Some value");
-    }
+    assertThat(result.getValue())
+      .as("value is set")
+      .isEqualTo("Some value");
+  }
 
 }
 //end::03-test-containers-02[]

@@ -3,8 +3,17 @@
 :revealjs_controls: true
 :revealjs_progress: true
 :revealjs_hash: true
-:revealjs_theme: solarized
-:revealjs_margin: 0.2
+:highlightjs-theme: https://highlightjs.org/static/demo/styles/agate.css
+//:revealjs_theme: beige
+//:revealjs_theme: black
+//:revealjs_theme: league
+:revealjs_theme: night
+//:revealjs_theme: serif
+//:revealjs_theme: simple
+//:revealjs_theme: sky
+//:revealjs_theme: solarized
+//:revealjs_theme: white
+:revealjs_margin: 0.3
 
 == Docker
 
@@ -334,12 +343,14 @@ docker run -it --rm alpine
 * ex depuis windows exécuter sur linux
 --
 
-=== Keycloak + Vuejs + Spring-boot 1/2
+=== Keycloak + Vuejs + Spring-boot 1/3
 
 [source,yml]
 ----
 include::../11-simuler-environnement-cible/docker-for-local-development-bbl-main/docker-compose.yml[]
 ----
+
+=== Keycloak + Vuejs + Spring-boot 2/3
 
 [source,shell]
 ----
@@ -350,7 +361,7 @@ http://kubernetes.docker.internal:8080
 
 http://kubernetes.docker.internal:5173
 
-=== Keycloak + Vuejs + Spring-boot 2/2
+=== Keycloak + Vuejs + Spring-boot 3/3
 
 image::assets/11-docker-compose.png[]
 
