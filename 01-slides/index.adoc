@@ -17,6 +17,12 @@
 Il est basé sur un fichier YAML qui permet de définir les services et les paramètres de leurs créations et ainsi de les démarrer par une commande unique."
 -- Wikipedia, Docker (logiciel) : https://fr.wikipedia.org/wiki/Docker_(logiciel)#Outils_associ.C3.A9s[Outils associés]
 
+=== Docker Hub
+
+Catalogue d'images docker.
+
+https://hub.docker.com/[hub.docker.com]
+
 == Cas d'utilisation 1/2
 
 [.notes]
@@ -46,6 +52,9 @@ Docker et docker-compose peuvent être utiles au quotidien pour les développeur
 --
 * Éviter de polluer son environnement
 --
+
+* base de données
+* serveur d'authentification
 
 === Asciidoctor
 
@@ -85,6 +94,10 @@ include::../docker-compose.yml[tag=01_slides]
 https://www.testcontainers.org/
 --
 
+=== Test containers avec spring boot
+
+
+
 == 04 Reproduire la CI en local
 
 [.notes]
@@ -107,7 +120,22 @@ Lancer des scripts sur le même environnement que la CI
 --
 * Par exemple springboot si on fait du JavaScript
 * Keycloak
+* ffmpeg + imagemagick
 --
+
+=== Conversion de .mov en .gif
+
+https://toub.es/2017/09/11/high-quality-gif-with-ffmpeg-and-docker/
+
+[source,shell]
+----
+alias video2gif='sudo docker run -v=`pwd`:/tmp/ffmpeg kafebob/video2gif'
+----
+
+[source,shell]
+----
+video2gif rabbitmq_manual_installation.mov rabbitmq_manual_installation.gif
+----
 
 == 07 Tester une nouvelle version d'un langage
 
@@ -116,12 +144,28 @@ Lancer des scripts sur le même environnement que la CI
 * (ex. java 11 java 17..)
 --
 
+=== Java 8
+
+[source,yml]
+----
+include::../docker-compose.yml[tag=07_java_8]
+----
+
+=== Java 17
+
+[source,yml]
+----
+include::../docker-compose.yml[tag=07_java_17]
+----
+
 == 08 Être admin dans un conteneur
 
 [.notes]
 --
 * quand on n'est pas admin de sa machine sur Windows par exemple
 --
+
+* installer des paquets sur une image
 
 == 09 Infrastructure éphémère
 
