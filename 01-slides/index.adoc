@@ -14,6 +14,8 @@
 //:revealjs_theme: solarized
 //:revealjs_theme: white
 :revealjs_margin: 0.3
+:outdir: ../docs
+:imagesdir: ../docs/assets
 
 == Docker
 
@@ -41,7 +43,7 @@ docker run -it --rm alpine
 
 Dans Docker Desktop
 
-image::./assets/open-terminal-container.png[width=500]
+image::open-terminal-container.png[width=500]
 
 == Cas d'utilisation 1/2
 
@@ -80,7 +82,7 @@ Docker et docker-compose peuvent être utiles au quotidien pour les développeur
 
 Installation classique de RabbitMq
 
-image::./assets/rabbitmq_manual_installation.gif[]
+image::rabbitmq_manual_installation.gif[]
 
 === RabbitMq — lancement avec docker
 
@@ -363,7 +365,7 @@ http://kubernetes.docker.internal:5173
 
 === Keycloak + Vuejs + Spring-boot 3/3
 
-image::assets/11-docker-compose.png[]
+image::11-docker-compose.png[]
 
 [source,shell]
 ----
@@ -374,3 +376,5 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz ren
 
 Des questions?
 🖐
+
+https://u.baldir.fr/bbl-dev-container[u.baldir.fr/bbl-dev-container]
