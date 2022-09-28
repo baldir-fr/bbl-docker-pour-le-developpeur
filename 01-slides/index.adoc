@@ -25,7 +25,14 @@ https://hub.docker.com/[hub.docker.com]
 
 === Ouvrir un terminal dans un container
 
+[source,shell]
+----
+docker run -it --rm alpine
+----
 
+Dans Docker Desktop
+
+image::./assets/open-terminal-container.png[width=500]
 
 == Cas d'utilisation 1/2
 
@@ -51,6 +58,7 @@ Docker et docker-compose peuvent être utiles au quotidien pour les développeur
 * Simuler l'environnement cible en local
 
 == 01 Utiliser des outils sans les installer
+
 [.notes]
 --
 * Éviter de polluer son environnement
@@ -67,7 +75,17 @@ image::./assets/rabbitmq_manual_installation.gif[]
 
 === RabbitMq — lancement avec docker
 
+[source,yml]
+----
+include::../docker-compose.yml[tag=01-rabbitmq]
+----
 
+[source,shell]
+----
+docker compose up 01-rabbitmq
+----
+
+http://localhost:15672
 
 === Asciidoctor
 
@@ -93,12 +111,16 @@ Ces slides footnote:[https://github.com/baldir-fr/bbl-docker-pour-le-developpeur
 include::../docker-compose.yml[tag=01_slides]
 ----
 
+[source,shell]
+----
+docker compose run build-slides
+----
+
 == 02 Tester un logiciel compliqué à installer
 
 [.notes]
 --
-* Par exemple
-**Gitlab (nécessite beaucoup de mémoire)
+* Par exemple **Gitlab (nécessite beaucoup de mémoire)
 ** Nextcloud
 * Pratique pour jouer avec la configuration
 --
@@ -108,6 +130,11 @@ include::../docker-compose.yml[tag=01_slides]
 [source,yml]
 ----
 include::../02-tester-logiciel-compliqué/nextcloud/docker-compose.yml[]
+----
+
+[source,shell]
+----
+docker compose -f 02-tester-logiciel-compliqué/nextcloud/docker-compose.yml up
 ----
 
 http://localhost:80
@@ -124,7 +151,6 @@ http://localhost:80
 
 https://www.testcontainers.org/[testcontainers.org]
 
-
 === Spring Boot + TestContainers + Redis 1/2
 
 [source,java]
@@ -140,6 +166,12 @@ include::../03-test-containers/spring-boot/src/test/java/com/example/DemoControl
 ----
 
 === Démo
+
+[source,shell]
+----
+cd 03-test-containers/spring-boot/
+./gradlew build
+----
 
 https://github.com/baldir-fr/bbl-docker-pour-le-developpeur/tree/main/03-test-containers/spring-boot
 
@@ -170,6 +202,11 @@ Editeur de code pré-configuré sur le navigateur.
 [source,yml]
 ----
 include::../docker-compose.yml[tag=05-code-server]
+----
+
+[source,shell]
+----
+docker compose up -d 05-code-server
 ----
 
 http://localhost:8094
@@ -213,12 +250,26 @@ video2gif rabbitmq_manual_installation.mov rabbitmq_manual_installation.gif
 include::../docker-compose.yml[tag=07_java_8]
 ----
 
+[source,shell]
+----
+docker compose run 07-movie-rental-java-8
+----
+
+
+
 === Java 17
 
 [source,yml]
 ----
 include::../docker-compose.yml[tag=07_java_17]
 ----
+
+
+[source,shell]
+----
+docker compose run 07-movie-rental-java-17
+----
+
 
 == 08 Être admin dans un conteneur
 
@@ -236,6 +287,20 @@ include::../docker-compose.yml[tag=07_java_17]
 Lancer un serveur pour le temps d'un événement * Pour un événement donné, lancer un serveur * Le supprimer à la fin de l'événement * Permet aux participants d'accéder à l'outil sans s'inscrire par exemple (les données sont supprimées à la fin de l'événement)
 --
 
+=== Tiddlywiki
+
+[source,yml]
+----
+include::../docker-compose.yml[tag=09_tiddlywiki]
+----
+
+[source,shell]
+----
+docker compose up -d 09-tiddlywiki
+----
+
+http://localhost:8082
+
 == 10 Bac à sable
 
 [.notes]
@@ -246,6 +311,22 @@ Lancer un serveur pour le temps d'un événement * Pour un événement donné, l
 ** sous réserve de certaines précautions
 --
 
+=== Apprendre les commandes linux
+
+https://hub.docker.com/_/busybox[Busybox] : https://en.wikipedia.org/wiki/BusyBox#Commands[Commandes disponibles]
+
+[source,shell]
+----
+docker run -it --rm busybox
+----
+
+https://hub.docker.com/_/alpine[Alpine]
+
+[source,shell]
+----
+docker run -it --rm alpine
+----
+
 == 11 Simuler l'environnement cible en local
 
 [.notes]
@@ -253,6 +334,32 @@ Lancer un serveur pour le temps d'un événement * Pour un événement donné, l
 * ex depuis windows exécuter sur linux
 --
 
+=== Keycloak + Vuejs + Spring-boot 1/2
+
+[source,yml]
+----
+include::../11-simuler-environnement-cible/docker-for-local-development-bbl-main/docker-compose.yml[]
+----
+
+[source,shell]
+----
+docker compose -f 11-simuler-environnement-cible/docker-for-local-development-bbl-main/docker-compose.yml up -d
+----
+
+http://kubernetes.docker.internal:8080
+
+http://kubernetes.docker.internal:5173
+
+=== Keycloak + Vuejs + Spring-boot 2/2
+
+image::assets/11-docker-compose.png[]
+
+[source,shell]
+----
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image -f docker-compose.yml
+----
+
 == 🙏 Merci
 
-Des questions? 🖐
+Des questions?
+🖐
