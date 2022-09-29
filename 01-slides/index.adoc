@@ -15,7 +15,7 @@
 //:revealjs_theme: white
 :revealjs_margin: 0.3
 :outdir: ../docs
-:imagesdir: ../docs/assets
+:imagesdir: assets
 
 == Docker
 

@@ -27,7 +27,7 @@ make 01-slides
 
 [source,shell]
 ----
-docker compose run build-pdf
+docker compose run --rm build-slides; rm -rf docs/assets;cp -r 01-slides/assets docs/
 # Ou avec GNU Make
 make 01-pdf
 ----
