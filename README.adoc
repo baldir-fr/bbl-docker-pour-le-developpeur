@@ -3,6 +3,8 @@
 * https://baldir-fr.github.io/bbl-docker-pour-le-developpeur[Les slides en live]
 * link:docs/bbl-docker-pour-le-developpeur.pdf[Version PDF]
 * link:docs/bbl-docker-pour-le-developpeur.epub[Version Epub]
+* link:https://www.youtube.com/watch?v=P1xElO5RKW0[Captation vidéo]
+
 
 == Pré-requis pour construire les exemples
 
