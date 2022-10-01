@@ -322,6 +322,12 @@ http://localhost:8082
 ** sous réserve de certaines précautions
 --
 
+=== Réduire la boucle de feedback pour optimiser du code
+
+https://www.bertrand-bougon.fr/experimentation/xp/2022/09/29/how-to-be-proud-of-an-experimentation.html[How to be proud of an experimentation] — Bertand Bougon 
+
+https://twitter.com/BBougon[@BBougon]
+
 === Apprendre les commandes linux
 
 https://hub.docker.com/_/busybox[Busybox] : https://en.wikipedia.org/wiki/BusyBox#Commands[Commandes disponibles]
@@ -371,6 +377,7 @@ image::11-docker-compose.png[]
 ----
 docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image -f docker-compose.yml
 ----
+
 
 == 🙏 Merci
 
