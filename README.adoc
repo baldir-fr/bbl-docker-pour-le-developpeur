@@ -43,6 +43,28 @@ docker compose run build-epub
 make 01-epub
 ----
 
+[#_generation_du_docbook]
+== Génération du docbook
+
+
+[source,shell]
+----
+docker compose run build-docbook
+# Ou avec GNU Make
+make 01-docbook
+----
+
+== Génération docx
+
+Prérequis : avoir pandoc installé (je n'ai pas encore réussi à le faire fonctionner avec docker)
+
+Après avoir <<_generation_du_docbook>>
+
+[source,shell]
+----
+pandoc --from docbook --to docx --toc --highlight-style tango -o docs/bbl-docker-pour-le-developpeur.docx docs/bbl-docker-pour-le-developpeur.docbook.xml
+----
+
 == Générer le diagramme de docker compose
 
 [source,shell]

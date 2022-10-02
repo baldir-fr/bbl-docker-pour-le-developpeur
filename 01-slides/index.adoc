@@ -7,15 +7,16 @@
 //:revealjs_theme: beige
 //:revealjs_theme: black
 //:revealjs_theme: league
-:revealjs_theme: night
+//:revealjs_theme: night
 //:revealjs_theme: serif
 //:revealjs_theme: simple
 //:revealjs_theme: sky
 //:revealjs_theme: solarized
-//:revealjs_theme: white
+:revealjs_theme: white
 :revealjs_margin: 0.3
 :outdir: ../docs
 :imagesdir: assets
+:toc: auto
 
 == Docker
 

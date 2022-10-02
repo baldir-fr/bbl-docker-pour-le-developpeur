@@ -36,7 +36,17 @@ services:
       - "01-slides/index.adoc"
       - "-o"
       - "docs/bbl-docker-pour-le-developpeur.epub"
-
+  build-docbook:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor"
+      - "-b"
+      - "docbook"
+      - "01-slides/index.adoc"
+      - "-o"
+      - "docs/bbl-docker-pour-le-developpeur.docbook.xml"
   # tag::01-rabbitmq[]
   01-rabbitmq:
     # http://localhost:15672

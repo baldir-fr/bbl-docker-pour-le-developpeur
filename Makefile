@@ -7,3 +7,5 @@ all: 01-slides 01-pdf 01-epub
 	docker compose run --rm build-pdf
 01-epub:
 	docker compose run --rm build-epub
+01-docbook:
+	docker compose run --rm build-docbook
