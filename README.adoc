@@ -58,7 +58,7 @@ make 01-docbook
 
 Prérequis : avoir pandoc installé (je n'ai pas encore réussi à le faire fonctionner avec docker)
 
-Après avoir <<_generation_du_docbook>>
+Après avoir <<_generation_du_docbook,généré le docbook>>
 
 [source,shell]
 ----
