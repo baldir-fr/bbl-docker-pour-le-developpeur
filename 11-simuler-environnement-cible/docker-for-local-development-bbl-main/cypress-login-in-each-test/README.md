@@ -1,4 +1,10 @@
-# Cypress E2E Login in each test
+# Learning Hour - Cypress OAuth
+
+---
+
+## Cypress E2E Login in each test
+
+--
 
 ## Configuration
 
@@ -13,6 +19,8 @@ module.exports = defineConfig({
   },
 });
 ```
+
+--
 
 ## Tests
 
@@ -55,11 +63,15 @@ function loginAs({username, password}) {
 }
 ```
 
-
-
+--
 
 ## Run tests
 
-https://asciinema.org/a/A72hdmDn7GMGDSZMUt0tOJ9F5
+<video controls src="assets/cypress-run-tests-with-login-in-each.mp4"/>
+--
 
-![](assets/cypress-run-tests-with-login-in-each.mp4)
+## Open Cypress
+
+<video controls src="assets/cypress-open-tests-login-each-time.mp4"/>
+
+--
