@@ -1,0 +1,1 @@
+asciidoctor-revealjs -a revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2 01-slides/index.adoc -o docs/index.html

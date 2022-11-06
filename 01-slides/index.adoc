@@ -4,19 +4,30 @@
 :revealjs_progress: true
 :revealjs_hash: true
 :highlightjs-theme: https://highlightjs.org/static/demo/styles/agate.css
-//:revealjs_theme: beige
-//:revealjs_theme: black
-//:revealjs_theme: league
-//:revealjs_theme: night
-//:revealjs_theme: serif
+// :revealjs_theme: beige
+:revealjs_theme: black
+// :revealjs_theme: league
+// :revealjs_theme: night
+// :revealjs_theme: serif
 //:revealjs_theme: simple
 //:revealjs_theme: sky
-//:revealjs_theme: solarized
-:revealjs_theme: white
+// :revealjs_theme: solarized
+// :revealjs_theme: white
 :revealjs_margin: 0.3
 :outdir: ../docs
 :imagesdir: assets
 :toc: auto
+
+== Docker c'est quoi pour vous?
+
+🤔
+
+C'est interactif
+
+* Contenerisation
+* Lancer des process isolés du systême hote
+* Utilisé grâce à Florimon
+*
 
 == Docker
 
@@ -111,6 +122,7 @@ C'est aussi un outil qui permet de générer du contenu.
 - pdf
 - slides
 - ebook
+- boujour
 
 === Démo Asciidoctor
 
@@ -383,6 +395,21 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz ren
 == 🙏 Merci
 
 Des questions?
+
 🖐
 
 https://u.baldir.fr/bbl-dev-container[u.baldir.fr/bbl-dev-container]
+
+Marc Bouvier — https://u.baldir.fr/me/[https://u.baldir.fr/me/]
+
+=== Comment
+
+Accélérer docker dans la
+
+=== En prod
+
+* vigilant sur les montées en version
+* certificats
+* réseaux virtuels
+* super user
+*
