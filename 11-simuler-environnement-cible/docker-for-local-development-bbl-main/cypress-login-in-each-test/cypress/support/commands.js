@@ -1,3 +1,5 @@
+import '@testing-library/cypress/add-commands'
+
 function loginAs({username, password}) {
   const sentArgs = {username, password}
   cy.visit('http://kubernetes.docker.internal:5173')
