@@ -1,7 +1,14 @@
+# Cypress E2E Login in each test
+
+```js
 const {defineConfig} = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+
+    },
     animationDistanceThreshold: 5,
     // arch: 'arm64',
     // baseUrl: null,
@@ -89,3 +96,6 @@ module.exports = defineConfig({
   },
 
 });
+
+```
+
