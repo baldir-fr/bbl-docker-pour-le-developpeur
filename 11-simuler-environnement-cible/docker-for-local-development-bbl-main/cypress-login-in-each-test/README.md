@@ -1,77 +1,221 @@
-# Learning Hour - Cypress OAuth
+# Learning Hour
 
 ---
 
-## Cypress E2E Login in each test
+## Cypress & Auth
+
+---
+
+
+---
+
+## Connect
+
+---
+
+## Concept
 
 --
 
-## Configuration
+### Run tests
+
+<video controls src="assets/cypress-run-tests-with-login-in-each.mp4"/>
+--
+
+### Open Cypress
+
+<video controls src="assets/cypress-open-tests-login-each-time.mp4"/>
+
+---
+
+### `cy.origin`
+
+https://docs.cypress.io/api/commands/origin
 
 ```js
-const {defineConfig} = require("cypress");
+const sentArgs = {username, password}
 
-module.exports = defineConfig({
-  e2e: {
-    experimentalSessionAndOrigin: true, // Permet de changer d'origine de et conserver des cookies entre plusieurs tests
-    experimentalStudio: true, // Permet de modifier les test depuis l'interface de Cypress
-    video: false, // Désactive les vidéos (actif par défaut)
-  },
+// Page du frontend (5173) qui redirige vers la mire de login keycloak
+cy.visit('http://kubernetes.docker.internal:5173')  
+
+// On se positionne dans le contexte keycloak (8080)
+cy.origin('http://kubernetes.docker.internal:8080',  
+  // Send the args here...  
+  {args: sentArgs},  
+  // ...and receive them at the other end here!  
+  ({username, password}) => {
+    // Login de l'utilsateur dans la mire de login de keycloak
+    cy.get('#username').type(username)  
+    cy.get('#password').type(password)  
+    cy.get("#kc-login").click();  
+  }  
+)  
+// Une fois sorti du contexte de keycloak, il ne faut pas oublier de visiter à nouveau le frontend pour rétablir l'origine
+cy.visit('http://kubernetes.docker.internal:5173')
+```
+
+--
+
+### `cy.origin` — Configuration
+
+```js
+const {defineConfig} = require("cypress");  
+  
+module.exports = defineConfig({  
+  e2e: {  
+    experimentalSessionAndOrigin: true
+  }
 });
 ```
 
 --
 
-## Tests
+### `cy.session`
+
+https://docs.cypress.io/api/commands/session
 
 ```js
-describe('Demo with keycloak', () => {
+// Mise en cache de la session  
+cy.session("id-du-cache", () => {  
+  cy.login({username, password});  
+  // les cookies, localstorage, sessionStorage sont mis en cache
+});
 
-  it('Fetches protected data from backend', () => {
-    loginAs({username: "user", password: "user"});
-    cy.visit('http://kubernetes.docker.internal:5173')
-    cy.contains("Fetch protected Data").click();
-    cy.contains("you got my private data!");
+// ...
 
-  })
-  it('Navigates to Learning Hours from navigation', () => {
-    loginAs({username: "user", password: "user"});
-    cy.visit('http://kubernetes.docker.internal:5173')
-    cy.contains("Learning hour").click();
-    cy.contains("AAAA");
-  })
+// Restauration du cache
+cy.session("id-du-cache");
 
-})
-
-function loginAs({username, password}) {
-  const sentArgs = {username, password}
-
-  cy.session(username, () => {
-    cy.visit('http://kubernetes.docker.internal:5173')
-    cy.origin('http://kubernetes.docker.internal:8080',
-      // Send the args here...
-      {args: sentArgs},
-      // ...and receive them at the other end here!
-      ({username, password}) => {
-        cy.get('#username').type(username)
-        cy.get('#password').type(password)
-        cy.get("#kc-login").click();
-      }
-    )
-    cy.visit('http://kubernetes.docker.internal:5173')
-  })
-}
 ```
 
 --
 
-## Run tests
+### `cy.session` — configuration
 
-<video controls src="assets/cypress-run-tests-with-login-in-each.mp4"/>
+
+```js
+const {defineConfig} = require("cypress");  
+  
+module.exports = defineConfig({  
+  e2e: {  
+    experimentalSessionAndOrigin: true
+  }
+});
+```
+
 --
 
-## Open Cypress
+### `before`
 
-<video controls src="assets/cypress-open-tests-login-each-time.mp4"/>
+https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Hooks
+
+```js
+describe('Demo with keycloak', () => {  
+  
+  before(() => {  
+    const username = "user";  
+    const password = "user";  
+  
+    // Mise en cache de la session  
+    cy.session(username, () => {  
+      cy.login({username, password});  
+    });  
+  });
+  // ...
+});
+```
 
 --
+
+### `beforeEach`
+
+```js
+// https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Hooks  
+describe('Demo with keycloak', () => {  
+  
+  // before(() => {  ... })
+  
+  beforeEach(() => {  
+    // restauration de la sessiop avant chaque test  
+    cy.session("user")  
+  });
+  
+  // ... tests
+});
+```
+
+--
+
+### Custom commands
+
+https://docs.cypress.io/api/cypress-api/custom-commands
+
+`cypress/support/command.js`
+
+```js
+function loginAs({username, password}) {  
+  const sentArgs = {username, password}  
+  cy.visit('http://kubernetes.docker.internal:5173')  
+  cy.origin('http://kubernetes.docker.internal:8080',  
+    // Send the args here...  
+    {args: sentArgs},  
+    // ...and receive them at the other end here!  
+    ({username, password}) => {    
+      cy.get('#username').type(username)  
+      cy.get('#password').type(password)  
+      cy.get("#kc-login").click();  
+    }  
+  )  
+  cy.visit('http://kubernetes.docker.internal:5173')  
+}
+Cypress.Commands.add("login", (username, password) => {  
+  loginAs(username, password);  
+});
+```
+
+--
+
+### ex — `cy.login`
+
+
+```js
+describe('Demo with keycloak', () => {  
+  
+  before(() => {  
+    const username = "user";  
+    const password = "user";  
+  
+    // Mise en cache de la session  
+    cy.session(username, () => {  
+      cy.login({username, password});  
+    });  
+  })  
+  
+  beforeEach(() => {  
+    // restauration de la sessiop avant chaque test  
+    cy.session("user")  
+  })  
+  
+  it('Fetches protected data from backend', () => {  
+    cy.visit('http://kubernetes.docker.internal:5173')  
+    cy.contains("Fetch protected Data").click();  
+    cy.contains("you got my private data!");  
+  
+  })  
+  it('Navigates to Learning Hours from navigation', () => {  
+    cy.visit('http://kubernetes.docker.internal:5173')  
+    cy.contains("Learning hour").click();  
+    cy.contains("AAAA");  
+  })  
+  
+})
+```
+
+---
+
+## Concrete
+
+---
+
+## Conclude
+
